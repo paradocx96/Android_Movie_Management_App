@@ -7,10 +7,6 @@
     android:orientation="vertical"
     tools:context=".MovieList">
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="50dp" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"

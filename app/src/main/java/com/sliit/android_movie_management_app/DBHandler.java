@@ -94,6 +94,7 @@ public class DBHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    public String type;
     public long registerUser(String username, String password) {
         // Gets the data repository in write mode
         SQLiteDatabase db = getWritableDatabase();
@@ -101,12 +102,12 @@ public class DBHandler extends SQLiteOpenHelper {
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
 
-        String type;
-        if (username == "Admin" || username == "admin") {
-            type = "Admin";
+
+        if (username.equals("Admin") || username.equals("admin")) {
+            type = "admin";
         }
         else {
-            type = "Customer";
+            type = "customer";
         }
 
         // Put parameter values to baseColumns
@@ -123,7 +124,6 @@ public class DBHandler extends SQLiteOpenHelper {
 
 
     public void loginUser() {
-
         SQLiteDatabase db = getReadableDatabase();
         String[] projection = {
                 DatabaseMaster.Users._ID,
@@ -193,7 +193,8 @@ public class DBHandler extends SQLiteOpenHelper {
                 null,
                 null,
                 null,
-                sortOrder
+                sortOrder,
+                null
         );
 
         while (cursor.moveToNext()) {
